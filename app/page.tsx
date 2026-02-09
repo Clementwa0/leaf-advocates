@@ -1,65 +1,133 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Hero } from "@/components/Hero";
+import { ServiceCard } from "@/components/ServiceCard";
+import { BlogCard } from "@/components/BlogCard";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Hero
+        eyebrow="Leaf Advocates LLC"
+        title="Modern legal counsel for growing businesses and families."
+        subtitle="Leaf Advocates LLC provides clear, practical legal advice across corporate, employment, property, and family law — with a focus on long-term partnership."
+        primaryCta={{
+          label: "Book a consultation",
+          href: "/book-consultation",
+        }}
+        secondaryCta={{
+          label: "Explore our services",
+          href: "/services",
+        }}
+      />
+
+      {/* Practice Areas Preview */}
+      <section className="section pb-16">
+        <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="eyebrow">Practice Areas</p>
+            <h2 className="heading-lg mt-2">
+              Strategic legal support for key moments.
+            </h2>
+            <p className="body-md mt-2 max-w-2xl">
+              Whether you are incorporating a new company, resolving a dispute, or
+              safeguarding family assets, our team provides grounded, practical
+              guidance.
+            </p>
+          </div>
+          <Link href="/services">
+            <button className="btn-secondary">View all services</button>
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          <ServiceCard
+            title="Corporate & Commercial"
+            description="Company registration, shareholder agreements, commercial contracts, and compliance frameworks aligned with your growth plans."
+          />
+          <ServiceCard
+            title="Litigation & Dispute Resolution"
+            description="Representation in commercial and civil disputes, arbitration, mediation, and negotiations to protect your position."
+          />
+          <ServiceCard
+            title="Property & Conveyancing"
+            description="Land transactions, titles, leases, and due diligence for individuals, developers, and institutional investors."
+          />
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Insights Preview */}
+      <section className="section pb-16">
+        <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="eyebrow">Insights</p>
+            <h2 className="heading-lg mt-2">
+              Legal perspectives in plain language.
+            </h2>
+            <p className="body-md mt-2 max-w-2xl">
+              Brief explainers and updates to help clients navigate evolving
+              regulation and risk.
+            </p>
+          </div>
+          <Link href="/insights">
+            <button className="btn-secondary">Visit Insights</button>
+          </Link>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          <BlogCard
+            category="Corporate"
+            title="Key documents for early-stage companies"
+            excerpt="From shareholder agreements to key commercial contracts, we highlight the core documents every growing business should prioritise."
+            meta="3 min read • Placeholder insight"
+          />
+          <BlogCard
+            category="Employment"
+            title="Designing compliant HR policies"
+            excerpt="How thoughtful employment contracts and policies can reduce disputes and support a healthy workplace."
+            meta="5 min read • Placeholder insight"
+          />
+          <BlogCard
+            category="Property"
+            title="Essential checks before acquiring land"
+            excerpt="Due diligence steps to consider before entering into a land purchase or long-term lease."
+            meta="4 min read • Placeholder insight"
+          />
+        </div>
+      </section>
+
+      {/* Contact Preview */}
+      <section className="section pb-20">
+        <div className="card">
+          <div className="card-inner flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="eyebrow">Contact</p>
+              <h2 className="heading-lg mt-2">Start a conversation.</h2>
+              <p className="body-md mt-2 max-w-xl">
+                Share a brief overview of your matter and preferred timelines. A
+                member of our team will respond with next steps and proposed
+                consultation slots.
+              </p>
+              <div className="mt-3 text-sm text-slate-700">
+                <p>Email: info@leafadvocates.co.ke</p>
+                <p>Phone: +254 700 000 000</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-3 md:items-end">
+              <Link href="/book-consultation">
+                <button className="btn-primary w-full justify-center md:w-auto">
+                  Book a consultation
+                </button>
+              </Link>
+              <Link href="/contact">
+                <button className="btn-secondary w-full justify-center md:w-auto">
+                  Contact the firm
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
+

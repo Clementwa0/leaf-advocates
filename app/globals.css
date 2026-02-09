@@ -2,25 +2,98 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a; /* slate-900 */
+
+  /* Leaf Advocates brand palette */
+  --leaf-deep: #064e3b; /* deep green */
+  --leaf-deep-alt: #14532d; /* slightly lighter deep green */
+  --leaf-soft: #f3f4f6; /* soft gray background */
+  --leaf-border: #e5e7eb; /* gray-200 */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  min-height: 100vh;
+  background-color: var(--leaf-soft);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+main {
+  width: 100%;
+}
+
+/* Typography scales */
+@layer utilities {
+  .heading-xl {
+    @apply text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900;
+  }
+
+  .heading-lg {
+    @apply text-2xl md:text-3xl font-semibold tracking-tight text-slate-900;
+  }
+
+  .heading-md {
+    @apply text-xl md:text-2xl font-semibold text-slate-900;
+  }
+
+  .body-lg {
+    @apply text-base md:text-lg text-slate-700 leading-relaxed;
+  }
+
+  .body-md {
+    @apply text-sm md:text-base text-slate-700 leading-relaxed;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Buttons & surface components */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-emerald-800 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-900;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-emerald-900/40 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-900 shadow-sm transition hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-100;
+  }
+
+  .card {
+    @apply rounded-2xl bg-white/80 shadow-sm ring-1 ring-slate-200/80 backdrop-blur-sm;
+  }
+
+  .card-inner {
+    @apply p-6 md:p-7;
+  }
+
+  .section {
+    @apply w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Accessibility helpers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
