@@ -10,7 +10,6 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
@@ -22,7 +21,7 @@ import {
   SheetHeader,
 } from "@/components/ui/sheet";
 
-import { navServices } from "@/constants";
+import { services } from "@/constants";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -69,7 +68,7 @@ export default function Navbar() {
 
                 <NavigationMenuContent>
                   <ul className="p-4 w-64 space-y-2">
-                    {navServices.map((service) => (
+                    {services.map((service) => (
                       <li key={service.href}>
                         <Link
                           href={service.href}
@@ -122,7 +121,7 @@ export default function Navbar() {
                 <div>
                   <p className="mb-2 font-semibold">Services</p>
                   <div className="flex flex-col gap-2 pl-4 border-l border-slate-200">
-                    {navServices.map((service) => (
+                    {services.map((service) => (
                       <Link
                         key={service.href}
                         href={service.href}

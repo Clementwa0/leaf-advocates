@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { navServices } from "@/constants";
+import { services } from "@/constants";
 
 export default function Footer() {
   return (
@@ -68,7 +68,7 @@ export default function Footer() {
               Practice Areas
             </h3>
             <ul className="space-y-3">
-              {navServices.slice(0, 5).map((service) => (
+              {services.slice(0, 5).map((service) => (
                 <li key={service.href}>
                   <Link
                     href={service.href}
